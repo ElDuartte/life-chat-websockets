@@ -1,0 +1,23 @@
+{
+  "name": "life-chat-websockets",
+  "version": "1.0.0",
+  "description": "This is a personal project to better understand how WebSockets work",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ElDuartte/life-chat-websockets.git"
+  },
+  "author": "Juan Felipe Duarte",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ElDuartte/life-chat-websockets/issues"
+  },
+  "homepage": "https://github.com/ElDuartte/life-chat-websockets#readme",
+  "dependencies": {
+    "http": "^0.0.1-security",
+    "ws": "^8.18.0"
+  }
+}
