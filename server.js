@@ -1,7 +1,19 @@
-const WebSocket = require('ws');
+const WebSocket = require("ws");
 
-const server = new WebSocket.Server({port:8080});
+const wss = new WebSocket.Server({ host: "::", port: 6969 }, () => {
+  console.log("WebSocket server started on ws://[::]:6969");
+});
 
-server.on('connection', (ws) => {
-console.log('New client connected!');
+console.log("Starting");
+
+wss.on("connection", function connection(ws) {
+  ws.on("message", function incoming(message) {
+    console.log(message + " ");
+  });
+
+  ws.on("close", function () {
+    console.log("closed!");
+  });
+
+  console.log("New client connected!");
 });
