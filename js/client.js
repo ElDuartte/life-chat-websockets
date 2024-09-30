@@ -5,34 +5,34 @@ document.addEventListener("DOMContentLoaded", function () {
   const sendButton = document.getElementById("sendButton");
   const messageList = document.getElementById("messages");
 
-  // disabling the send button until WebSocket is coneected
-  sendButton.disabled = true;
+  sendButton.disabled = true; // Initially disable the send button
 
+  // Log when the connection is opened
   socket.onopen = function () {
     console.log("Connected to WebSocket server");
-    // enabling the send button
-    sendButton.disabled = false;
+    sendButton.disabled = false; // Enable send button when connected
   };
 
+  // Log incoming messages
   socket.onmessage = function (event) {
     const message = event.data;
-    console.log("Received:", message);
-
+    console.log("Received:", message); // Log received messages
     const listItem = document.createElement("li");
-    listItem.textContent = message;
+    listItem.textContent = message; // Display the received message
     messageList.appendChild(listItem);
   };
 
+  // Handle the send button click
   sendButton.addEventListener("click", function () {
     const message = messageInput.value.trim(); // Trim whitespace
-    console.log("Message Input Value:", message);
-    console.log("WebSocket State:", socket.readyState);
+    console.log("Message Input Value:", message); // Log the input value
+    console.log("WebSocket State:", socket.readyState); // Log WebSocket state
 
     if (socket.readyState === WebSocket.OPEN && message) {
       socket.send(message); // Send message to server
 
       const listItem = document.createElement("li");
-      listItem.textContent = "You: " + message; // Display your message
+      listItem.textContent = "You: " + message; // Display your own message
       messageList.appendChild(listItem);
 
       messageInput.value = ""; // Clear input field
@@ -41,12 +41,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // Handle connection close
   socket.onclose = function () {
     console.log("WebSocket connection closed");
-    sendButton.disabled = true; // disable the button if it disconects
+    sendButton.disabled = true; // Disable send button on close
   };
 
+  // Handle errors
   socket.onerror = function (error) {
-    console.log("Websocket error:", error);
+    console.log("WebSocket error:", error);
   };
 });
