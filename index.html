@@ -5,14 +5,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>WebSocket Chat</title>
+  <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
   <h1>WebSocket Chat</h1>
-  <input id="messageInput" type="text" placeholder="Type a message...">
-  <button id="sendButton">Send</button>
-
-  <ul id="messages"></ul>
+  <div class="container">
+    <div class="username-container">
+      <input id="usernameInput" type="text" placeholder="Enter username...">
+      <button id="connectButton" class="">Connect</button>
+    </div>
+    <div id="connectedUsers"></div>
+    <ul id="messages"></ul>
+    <input id="messageInput" type="text" placeholder="Type a message...">
+    <button id="sendButton">Send</button>
+  </div>
 
   <script src="./js/client.js"></script>
 </body>
